@@ -1,4 +1,4 @@
-use hyper::{Body, Client, Method, Request};
+// use hyper::{Body, Client, Method, Request};
 use std::process::Command;
 use warp::{Filter, Rejection, Reply};
 
@@ -41,7 +41,7 @@ static CHROME_ARGS: [&'static str; 33] = [
     "--no-pings"
 ];
 
-#[tokio::main(flavor = "current_thread")]
+#[tokio::main]
 async fn main() {
     let base_route = warp::path::end().and_then(handler);
     let fork = warp::path("fork").map(|| {
@@ -74,15 +74,15 @@ async fn main() {
 
 /// get json endpoint for chrome instance
 async fn handler() -> Result<impl Reply> {
-    let req = Request::builder()
-        .method(Method::GET)
-        .uri("http://127.0.0.1:9222/json/version")
-        .header("content-type", "application/json")
-        .body(Body::default())
-        .unwrap_or_default();
+    // let req = Request::builder()
+    //     .method(Method::GET)
+    //     .uri("http://127.0.0.1:9222/json/version")
+    //     .header("content-type", "application/json")
+    //     .body(Body::default())
+    //     .unwrap_or_default();
 
-    let client = Client::new();
-    let resp = client.request(req).await.unwrap_or_default();
+    // let client = Client::new();
+    // let resp = client.request(req).await.unwrap_or_default();
 
-    Ok(resp)
+    Ok("healthy!")
 }
