@@ -18,9 +18,8 @@ USER root
 COPY --from=rustbuilder /usr/local/cargo/bin/chrome_driver /usr/local/bin/chrome_driver
 COPY ./docker-entrypoint.sh /
 
-RUN apk add --no-cache tini curl dbus
+RUN apk add --no-cache tini curl
 RUN chmod +x /docker-entrypoint.sh
-RUN mkdir -p /var/run/dbus
 
 USER chrome
 
