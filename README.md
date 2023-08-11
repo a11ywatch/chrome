@@ -17,7 +17,7 @@ Use the env variable `REMOTE_ADDRESS` to change the address of the chrome instan
 
 The application will pass alp health checks when using port `6000` to get the status of the chrome container.
 
-A side loaded application is required to run chrome on a load balancer, one of the main purposes of the control panel.
+A side loaded application is required to run chrome on a load balancer, one of the main purposes of the project.
 
 The default port is `9222` for chrome.
 
@@ -31,7 +31,7 @@ If your running locally use the following to start the args with the first param
 
 ## API
 
-1. POST: `f/ork` to start a new chrome instance or use `fork/$port` with the port to startup the instance.
+1. POST: `/fork` to start a new chrome instance or use `fork/$port` with the port to startup the instance.
 2. POST: `/shutdown/$PID` to shutdown the instance. ex: `curl --location --request POST 'http://localhost:6000/shutdown/77057'`
 3. POST: `/json/version` get the json info of the chrome instance to connect to web sockets.
 
@@ -41,12 +41,14 @@ If your running locally use the following to start the args with the first param
 
 ```sh
 curl --location --request POST 'http://localhost:6000/fork'
+# PID 87659
 ```
 
 `/shutdown`
 
 ```sh
 curl --location --request POST 'http://localhost:6000/shutdown'
+# you can also pass in a PID at the subpath /shutdown/:id
 ```
 
 `/json/version`
@@ -54,14 +56,14 @@ curl --location --request POST 'http://localhost:6000/shutdown'
 ```sh
 curl --location --request GET 'http://localhost:6000/json/version' \
 --header 'Content-Type: application/json'
-{
-   "Browser": "HeadlessChrome/114.0.5735.133",
-   "Protocol-Version": "1.3",
-   "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/114.0.5735.133 Safari/537.36",
-   "V8-Version": "11.4.183.23",
-   "WebKit-Version": "537.36 (@fbfa2ce68d01b2201d8c667c2e73f648a61c4f4a)",
-   "webSocketDebuggerUrl": "ws://127.0.0.1:9222/devtools/browser/74f18759-f4b3-4b1f-a68c-942570542f0e"
-}
+# {
+#    "Browser": "HeadlessChrome/114.0.5735.133",
+#    "Protocol-Version": "1.3",
+#    "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/114.0.5735.133 Safari/537.36",
+#    "V8-Version": "11.4.183.23",
+#    "WebKit-Version": "537.36 (@fbfa2ce68d01b2201d8c667c2e73f648a61c4f4a)",
+#    "webSocketDebuggerUrl": "ws://127.0.0.1:9222/devtools/browser/74f18759-f4b3-4b1f-a68c-942570542f0e"
+# }
 ```
 
 ## Args
