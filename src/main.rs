@@ -10,7 +10,7 @@ use std::sync::Mutex;
 type Result<T> = std::result::Result<T, Rejection>;
 
 /// static chrome arguments to start application
-static CHROME_ARGS: [&'static str; 63] = [
+static CHROME_ARGS: [&'static str; 65] = [
     "--headless",
     "--no-sandbox",
     "--no-first-run",
@@ -78,6 +78,8 @@ static CHROME_ARGS: [&'static str; 63] = [
     "--no-pings",
     "--use-gl=swiftshader",
     "--window-size=1920,1080",
+    "--disable-vulkan-fallback-to-gl-for-testing",
+    "--disable-vulkan-surface",
     "--disable-features=AudioServiceOutOfProcess,IsolateOrigins,site-per-process,ImprovedCookieControls,LazyFrameLoading,GlobalMediaControls,DestroyProfileOnBrowserClose,MediaRouter,DialMediaRouteProvider,AcceptCHFrame,AutoExpandDetailsElement,CertificateTransparencyComponentUpdater,AvoidUnnecessaryBeforeUnloadCheckSync,Translate"
 ];
 
