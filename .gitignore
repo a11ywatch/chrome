@@ -3,3 +3,5 @@
 # Added by cargo
 
 /target
+
+deploy.sh
