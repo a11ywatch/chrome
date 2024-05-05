@@ -78,8 +78,3 @@ chrome_driver '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' 127
 
 # DevTools listening on ws://127.0.0.1:9222/devtools/browser/c789f9e0-7f65-495d-baee-243eb454ea15
 ```
-
-## Todo
-
-1. Keep track of ports started and bump ports on standard calls to `fork`.
-1. Periodic health checking endpoints to see if instance is alive for cleanup.
